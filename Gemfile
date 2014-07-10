@@ -43,3 +43,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"

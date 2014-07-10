@@ -26,6 +26,7 @@ describe 'creating posts' do
 		click_link 'New post'
 		expect(current_path).to eq new_post_path
 	end
+
 	it 'adds the post to the homepage' do
 		visit '/posts/new'
 		fill_in 'Title', with: 'The supercool post title!'
@@ -34,5 +35,23 @@ describe 'creating posts' do
 		expect(current_path).to eq posts_path
 		expect(page).to have_content 'The supercool post title!'
 		expect(page).to have_content 'The supercool post description!'
+	end
+
+	it 'can add a photo to the post' do
+		visit '/posts/new'
+		fill_in 'Title', with: 'New post'
+		fill_in 'Body', with: 'Body'
+		attach_file 'Image', Rails.root.join('spec/images/parrot.jpeg')
+		click_button 'Post'
+		expect(current_path).to eq posts_path
+		expect(page).to have_css 'img.uploaded-pic'
+	end
+
+	it 'doesnt show any image if there is no file attached' do
+		visit '/posts/new'
+		fill_in 'Title', with: 'New post'
+		fill_in 'Body', with: 'Body'
+		click_button 'Post'
+		expect(page).not_to have_css 'img.uploaded-pic'
 	end
 end
