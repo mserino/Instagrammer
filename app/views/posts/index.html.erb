@@ -1,0 +1,9 @@
+<% if @posts.empty? %>
+	<h1>No posts yet</h1>
+<% else %>
+	<% @posts.each do |post| %>
+		<h1><%= post.title %></h1>
+		<p><%= post.body %></p>
+	<% end %>
+<% end %>
+	<p><%= link_to 'New post', new_post_path %></p>
