@@ -30,6 +30,7 @@ gem 'spring',        group: :development
 group :test, :development do
 	gem 'rspec-rails'
 	gem 'capybara'
+	gem 'database_cleaner'
 end
 
 # Use ActiveModel has_secure_password
@@ -47,4 +48,9 @@ end
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
-gem 'rails_12factor'
+
+gem 'devise'
+
+group :production do
+	gem 'rails_12factor'
+end
