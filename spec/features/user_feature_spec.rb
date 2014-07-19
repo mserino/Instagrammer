@@ -19,3 +19,19 @@ describe 'user registration/login' do
 		expect(page).to have_content 'Signed in successfully'
 	end
 end
+
+describe 'adding posts' do
+	before do
+		alex = User.create(email: 'test@test.com', password: '12345678', password_confirmation: '12345678')
+		login_as alex
+	end
+
+	it 'user adds posts' do
+		visit '/posts/new'
+		fill_in 'Title', with: 'New post'
+		fill_in 'Body', with: 'Body'
+		attach_file 'Image', Rails.root.join('spec/images/parrot.jpeg')
+		click_button 'Post'
+		expect(page).to have_content 'Posted by: test@test.com'
+	end
+end

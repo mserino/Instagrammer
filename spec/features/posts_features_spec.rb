@@ -10,7 +10,11 @@ describe 'posts' do
 	end
 
 	context 'with posts' do
-		before {Post.create title: 'New post', body: 'This is my first post'}
+		before do
+			alex = User.create(email: 'test@test.com', password: '12345678', password_confirmation: '12345678')
+			login_as alex
+			alex.posts.create title: 'New post', body: 'This is my first post'
+		end
 
 		it 'displays the post' do
 			visit '/posts'
@@ -27,7 +31,7 @@ describe 'creating posts' do
 			alex = User.create(email: 'test@test.com', password: '12345678', password_confirmation: '12345678')
 			login_as alex
 		end
-		
+
 		it 'clicks the link' do
 			visit '/posts'
 			click_link 'New post'
