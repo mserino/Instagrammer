@@ -9,7 +9,7 @@
 		<% end %>
 		</p>
 		<p><%= post.body %></p>
-		<p>Posted by: <%= current_user.email %></p>
+		<p>Posted by: <%= post.user.email %></p>
 	<% end %>
 <% end %>
 <p><%= link_to 'New post', new_post_path %></p>
