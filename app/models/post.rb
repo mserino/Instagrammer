@@ -10,4 +10,16 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
+  has_and_belongs_to_many :tags
+
+  def tag_names
+  	''
+  	# tag_list.split(', ').each do |tag|
+  	# 	tag.create
+  	# end
+  end
+
+  def tag_names=(tag_list)
+  	self.tags << Tag.create(name: tag_list)
+  end
 end

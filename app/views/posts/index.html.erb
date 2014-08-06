@@ -20,18 +20,23 @@
 
 					<!-- panel -->
 					<div class="panel panel-default">
-					  <div class="panel-heading">
+					 	<div class="panel-heading">
 					    <h3 class="panel-title"><%= post.title %></h3>
-					  </div>
-					  <div class="panel-body">
+					  	</div>
+					  	<div class="panel-body">
 					    <p>
 							<% if post.image.present? %>	
 								<%= image_tag post.image.url(:thumb), class: 'uploaded-pic' %>
 							<% end %>
 							</p>
 							<p><%= post.body %></p>
-					  </div>
-					  <div class='panel-footer'>
+							<p>
+								<% post.tags.each do |tag| %>
+									<%= tag.name %>
+								<% end %>
+							</p>
+					  	</div>
+					  	<div class='panel-footer'>
 							Posted by: <%= post.user.email %>
 						</div>
 					</div>
