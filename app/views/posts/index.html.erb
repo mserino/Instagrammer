@@ -1,15 +1,45 @@
-<% if @posts.none? %>
-	<h1>No posts yet</h1>
-<% else %>
-	<% @posts.each do |post| %>
-		<h1><%= post.title %></h1>
-		<p>
-		<% if post.image.present? %>	
-			<%= image_tag post.image.url(:thumb), class: 'uploaded-pic' %>
-		<% end %>
+<% unless signed_in? %>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Instagrammer</h1>
+        <p>This is a project created on the 9th and 10th weeks of <a href='http://www.makersacademy.com' target='_blank'>Makers Academy</a>, a 12 weeks coding bootcamp in Shoreditch, London</p>
+        <p>
+        	<%= link_to 'Sign up »', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
 		</p>
-		<p><%= post.body %></p>
-		<p>Posted by: <%= post.user.email %></p>
-	<% end %>
+      </div>
+    </div>
 <% end %>
-<p><%= link_to 'New post', new_post_path %></p>
+
+<div class='container'>
+	<% if @posts.none? %>
+		<h1>No posts yet</h1>
+	<% else %>
+		<div class='row'>
+			<% @posts.each do |post| %>
+				<div class='col-sm-4'>
+
+					<!-- panel -->
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title"><%= post.title %></h3>
+					  </div>
+					  <div class="panel-body">
+					    <p>
+							<% if post.image.present? %>	
+								<%= image_tag post.image.url(:thumb), class: 'uploaded-pic' %>
+							<% end %>
+							</p>
+							<p><%= post.body %></p>
+					  </div>
+					  <div class='panel-footer'>
+							Posted by: <%= post.user.email %>
+						</div>
+					</div>
+					<!-- end panel -->
+
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+	<p><%= link_to 'New post', new_post_path, class: 'btn btn-success btn-lg' %></p>
+</div>
