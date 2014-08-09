@@ -14,9 +14,11 @@
 	<% if @posts.none? %>
 		<h1>No posts yet</h1>
 	<% else %>
-		<div class='row'>
-			<%= render @posts %>
-		</div>
+		<% @posts.in_groups_of(3, false).each do |post_triplet| %>
+			<div class='row'>
+					<%= render post_triplet %>
+			</div>
+		<% end %>
 	<% end %>
 	<p><%= link_to 'New post', new_post_path, class: 'btn btn-success btn-lg' %></p>
 </div>
