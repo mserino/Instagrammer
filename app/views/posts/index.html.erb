@@ -32,7 +32,7 @@
 							<p><%= post.body %></p>
 							<p>
 								<% post.tags.each do |tag| %>
-									<%= tag.name %>
+									<%= link_to tag.name, '#' %>
 								<% end %>
 							</p>
 					  	</div>
