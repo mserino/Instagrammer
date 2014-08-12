@@ -32,9 +32,12 @@
 			<!-- map link showing only if present -->
 			<% unless post.address.blank? %>
 				<p>
-					<%= link_to 'Map', post_map_path(post), class: 'btn btn-warning' %>
-				</p>
+					<%= link_to 'Map', post_map_path(post), class: 'btn btn-info' %>
 			<% end %>
+
+			<!-- payment -->
+				<%= link_to 'Buy', new_post_charge_path(post), class: 'btn btn-warning' %>
+			</p>
 
   	</div>
 

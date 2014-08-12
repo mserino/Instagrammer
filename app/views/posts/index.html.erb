@@ -11,6 +11,9 @@
 <% end %>
 
 <div class='container'>
+	<!-- new post -->
+	<p><%= link_to 'New post', new_post_path, class: 'btn btn-success btn-lg' %></p>
+
 	<% if @posts.none? %>
 		<h1>No posts yet</h1>
 	<% else %>
@@ -20,5 +23,4 @@
 			</div>
 		<% end %>
 	<% end %>
-	<p><%= link_to 'New post', new_post_path, class: 'btn btn-success btn-lg' %></p>
 </div>

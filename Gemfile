@@ -31,6 +31,7 @@ group :test, :development do
 	gem 'rspec-rails'
 	gem 'capybara'
 	gem 'database_cleaner'
+	gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password
@@ -52,6 +53,8 @@ gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.2.0'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :production do
 	gem 'rails_12factor'

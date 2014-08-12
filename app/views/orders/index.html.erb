@@ -1,0 +1,14 @@
+<div class='container'>
+	<% unless @orders.any? %>
+		<h1>No orders yet</h1>
+	<% else %>
+		<h1>Current orders:</h1>
+		<ul>
+			<% @orders.each do |order| %>
+				<li>
+					<p><%= order.post.title %></p>
+					<p>Ordered by <strong><%= order.user.email %></strong></p>
+				</li>
+			<% end %>
+	<% end %>
+</div>
