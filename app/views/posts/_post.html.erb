@@ -39,7 +39,7 @@
 				<%= link_to 'Buy', new_post_charge_path(post), class: 'btn btn-warning' %>
 
 			<!-- likes -->
-				<%= link_to "❤ #{post.likes.count}", post_likes_path(post), method: :post, class: 'btn btn-primary' %>
+				<%= link_to "❤ #{post.likes.count}", post_likes_path(post), class: 'btn btn-primary like-btn', data: { 'post-id' => post.id } %>
 			</p>
 
   	</div>

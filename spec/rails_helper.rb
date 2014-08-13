@@ -8,6 +8,17 @@ require 'aws'
 AWS.stub!
 AWS.config(:access_key_id => "TESTKEY", :secret_access_key => "TESTSECRET")
 
+# Poltergeist configuration
+require 'capybara/poltergeist'
+require 'database_cleaner'
+Capybara.javascript_driver = :poltergeist
+
+# thin configuration
+Capybara.server do |app, port|
+  require 'rack/handler/thin'
+  Rack::Handler::Thin.run(app, :Port => port)
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -29,6 +40,28 @@ RSpec.configure do |config|
   config.after(:each) do
     Warden.test_reset!
   end
+
+  # DATABASE CLEANER STRATEGY
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

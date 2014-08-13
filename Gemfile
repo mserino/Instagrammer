@@ -30,6 +30,7 @@ gem 'spring',        group: :development
 group :test, :development do
 	gem 'rspec-rails'
 	gem 'capybara'
+	gem 'poltergeist'
 	gem 'database_cleaner'
 	gem 'launchy'
 end
@@ -55,6 +56,10 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+gem 'websocket-rails'
+
+gem 'thin'
 
 group :production do
 	gem 'rails_12factor'
