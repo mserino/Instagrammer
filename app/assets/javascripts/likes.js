@@ -6,7 +6,7 @@ $(document).ready(function(){
 		$.post(url)
 	}) //	$('.like-btn').on('click', function(event) {
 
-	var connection = new WebSocketRails('window.location.host/websocket');
+	var connection = new WebSocketRails(window.location.host + '/websocket');
 
 	var likesChannel = connection.subscribe('likes');
 	likesChannel.bind('new', function(post){
