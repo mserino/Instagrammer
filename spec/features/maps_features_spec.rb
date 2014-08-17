@@ -1,4 +1,5 @@
 # require 'rails_helper'
+# require 'launchy'
 
 # describe 'maps' do
 #   context 'posts with addresses' do
@@ -11,7 +12,7 @@
 #       visit '/posts'
 #       click_link 'Map'
 #       # expect(page).to have_map
-#       # expect(page).to have_css '.gm-style'
+#       expect(page).to have_css '.gm-style'
 #     end
 #   end
 # end

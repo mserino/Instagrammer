@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'launchy'
 
 describe 'liking posts' do
 	before do
@@ -14,6 +15,15 @@ describe 'liking posts' do
 	it 'can be liked, incrementing the likes count', js: true do
 		visit '/posts'
 		click_link '❤ 0'
+		expect(page).to have_link '❤ 1'
+	end
+
+	it 'can only be liked once per user', js: true do
+		visit '/posts'
+		click_link '❤ 0'
+		sleep 2
+		click_link '❤ 1'
+		sleep 2
 		expect(page).to have_link '❤ 1'
 	end
 end

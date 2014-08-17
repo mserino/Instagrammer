@@ -3,7 +3,11 @@ $(document).ready(function(){
 		event.preventDefault();
 
 		var url = $(this).attr('href')
-		$.post(url)
+		$.post(url, function(error) {
+			if(error.message !== undefined {
+				alert(error.message);
+			})
+		})
 	}) //	$('.like-btn').on('click', function(event) {
 
 	var connection = new WebSocketRails(window.location.host + '/websocket');
