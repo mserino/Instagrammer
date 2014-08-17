@@ -3,7 +3,7 @@ require 'launchy'
 
 describe 'liking posts' do
 	before do
-		alex = User.create email: "alex@alex.com", password: '12345678', password_confirmation: '12345678'
+		alex = create(:user)
 		alex.posts.create title: 'cool', body: 'cool post'
 	end
 
