@@ -1,6 +1,6 @@
 Instagrammer
 ============
-Week #9 and #10 project of [Makers Academy](http://www.makersacademy.com)
+Week #9 and #10 project of [Makers Academy](http://www.makersacademy.com).
 
 ##What is it?
 Instagrammer is a clone of the most famous social network for photography, created on the 9th and 10th weeks of Makers Academy.
